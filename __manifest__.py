@@ -2,7 +2,7 @@
 
 {
     'name': "Job Estimate Template",
-    'version': '10.0.1',
+    'version': '10.0.2',
     'category': 'sale',
     'website': 'www.hashmicro.com',
     'summary': 'Job Estimate Template',
