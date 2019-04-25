@@ -19,6 +19,7 @@
                             </group>
                             <group colspan="2" col="2">
                                 <field name="var_internal_ref" required="1"/>
+                                <field name="description" />
                             </group>
                         </group>
                         <notebook>

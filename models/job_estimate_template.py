@@ -25,7 +25,7 @@ class JobEstimateTemplate(models.Model):
     labour_estimate_ids = fields.One2many('job.estimate.template.line', 'labour_estimate_id')
     overhead_ids = fields.One2many('job.estimate.template.line', 'overhead_id')
     subcon_estimation_ids = fields.One2many('job.estimate.template.line', 'subcon_id')
-
+    description = fields.Char('Description',help="This fields shows the description of the job estimate template")
     # Export template from Job Estimate Template with data in .xls file.
     @api.multi
     def export_xls_template(self):
