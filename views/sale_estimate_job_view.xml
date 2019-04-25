@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<data>
+		<record id="sale_estimate_job_costing_form_inherit" model="ir.ui.view">
+			<field name="name">sale.estimate.job.inherit</field>
+			<field name="model">sale.estimate.job</field>
+			<field name="inherit_id" ref="job_costing_management_extension.view_sale_estimate_form_job"/>
+			<field name="arch" type="xml">
+				<xpath expr="//page[4]" position="after">
+					<page string="Variable">
+						<field name="variable_ids">
+							<tree string="Variable" editable="bottom">
+								<field name="job_variable_id" required="1"/>
+								<field name="qty"/>
+								<field name="uom" readonly="1"/>
+								<field name="subtotal" />
+							</tree>
+						</field>
+					</page>
+				</xpath>
+
+				<xpath expr="//field[@name='estimate_ids']/tree/field[@name='job_type']" position="after">
+					<field name="job_estimate_template_id" />
+					<field name="var_qty" invisible="1" />
+				</xpath>
+
+				<xpath expr="//field[@name='labour_estimate_line_ids']/tree/field[@name='job_type']" position="after">
+					<field name="job_estimate_template_id" />
+					<field name="var_qty" invisible="1" />
+				</xpath>
+
+				<xpath expr="//field[@name='subcon_estimation_line_ids']/tree/field[@name='job_type']" position="after">
+					<field name="job_estimate_template_id" />
+					<field name="var_qty" invisible="1" />
+				</xpath>
+
+				<xpath expr="//field[@name='overhead_estimate_line_ids']/tree/field[@name='job_type']" position="after">
+					<field name="job_estimate_template_id" />
+					<field name="var_qty" invisible="1" />
+				</xpath>
+
+			</field>
+		</record>
+		
+		<!--<record id="sale_estimate_job_form_customer_inherit" model="ir.ui.view">
+			<field name="name">sale.estimate.job.inherit</field>
+			<field name="model">sale.estimate.job</field>
+			<field name="inherit_id" ref="job_cost_estimate_customer.view_sale_estimate_form_job"/>
+			<field name="arch" type="xml">
+				<xpath expr="//page[3]" position="after">
+					<page string="Variable">
+						<field name="variable_ids">
+							<tree string="Variable" editable="bottom">
+								<field name="job_variable_id"/>
+								<field name="qty"/>
+								<field name="uom" readonly="1"/>
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</field>
+		</record>-->
+	</data>
+</odoo>

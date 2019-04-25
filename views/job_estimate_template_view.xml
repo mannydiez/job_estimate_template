@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="job_estimate_template_form" model="ir.ui.view">
+            <field name="name">Job Estimate Template</field>
+            <field name="model">job.estimate.template</field>
+            <field name="arch" type="xml">
+                <form string="Job Estimate Template">
+                    <header>
+                        <button name="export_xls_template" type="object" class="oe_highlight" string="Export"
+                                attrs="{'invisible':[('id','==', False)]}"/>
+                        <field name="id" invisible="1"/>
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <group colspan="4" col="4">
+                                <field name="name" required="1"/>
+                                <field name="uom" required="1" options="{'no_create_edit': True}"/>
+                            </group>
+                            <group colspan="2" col="2">
+                                <field name="var_internal_ref" required="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Material Estimation">
+                                <field name="job_estimate_ids" context="{'default_job_type':'material'}" nolabel="1">
+                                    <tree string="Material Estimation" editable="bottom">
+                                        <field name="job_type" invisible="1"/>
+                                        <field name="group_product_id"/>
+                                        <field name="product_id"/>
+                                        <field name="product_description"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="uom_qty" invisible="1"/>
+                                        <field name="product_uom"/>
+                                        <field name="price_unit"/>
+                                        <field name="discount"/>
+                                        <field name="price_subtotal"/>
+                                        <field name="job_estimate_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Labour Estimation">
+                                <field name="labour_estimate_ids" context="{'default_job_type':'labour'}" nolabel="1">
+                                    <tree string="Labour Estimation" editable="bottom">
+                                        <field name="job_type" invisible="1"/>
+                                        <field name="group_product_id"/>
+                                        <field name="product_id"/>
+                                        <field name="product_description"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="uom_qty"/>
+                                        <field name="product_uom"/>
+                                        <field name="price_unit"/>
+                                        <field name="discount"/>
+                                        <field name="price_subtotal"/>
+                                        <field name="labour_estimate_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Subcon Estimation">
+                                <field name="subcon_estimation_ids" context="{'default_job_type':'subcon'}" nolabel="1">
+                                    <tree string="Subcon Estimation" editable="bottom">
+                                        <field name="job_type" invisible="1"/>
+                                        <field name="group_product_id"/>
+                                        <field name="product_id"/>
+                                        <field name="product_description"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="uom_qty" invisible="1"/>
+                                        <field name="product_uom"/>
+                                        <field name="price_unit"/>
+                                        <field name="discount"/>
+                                        <field name="price_subtotal"/>
+                                        <field name="overhead_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Overhead Estimation">
+                                <field name="overhead_ids" context="{'default_job_type':'overhead'}" nolabel="1">
+                                    <tree string="Overhead Estimation" editable="bottom">
+                                        <field name="job_type" invisible="1"/>
+                                        <field name="group_product_id"/>
+                                        <field name="product_id"/>
+                                        <field name="product_description"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="uom_qty" invisible="1"/>
+                                        <field name="product_uom"/>
+                                        <field name="price_unit"/>
+                                        <field name="discount"/>
+                                        <field name="price_subtotal"/>
+                                        <field name="overhead_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="job_estimate_template_tree" model="ir.ui.view">
+            <field name="name">job.estimate.template.tree</field>
+            <field name="model">job.estimate.template</field>
+            <field name="arch" type="xml">
+                <tree string="Estimate">
+                    <field name="name"/>
+                    <field name="uom"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_job_estimate_template" model="ir.actions.act_window">
+            <field name="name">Job Estimate Template</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">job.estimate.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_job_estimate_template" name="Job Estimate Template" action="action_job_estimate_template"
+                  parent="sales_team.menu_sales"/>
+
+        <menuitem id="menu_import_job_estimate_template" name="Import Job Estimate Variable"
+                  action="action_import_job_estimate_view_wizard"
+                  parent="odoo_job_costing_management.menu_job_cost_managmt"/>
+
+    </data>
+</odoo>

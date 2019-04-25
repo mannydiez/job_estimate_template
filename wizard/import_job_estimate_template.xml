@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+
+        <record id="import_job_estimate_view_wizard" model="ir.ui.view">
+            <field name="name">Import Job Estimate View Wizard</field>
+            <field name="model">import.job.estimate.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Import Job Estimate Variable">
+                    <group>
+                        <field name="import_file"/>
+                    </group>
+                    <footer>
+                        <button name="import_template" type="object" string="Import" default_focus="1"
+                                class="btn-primary"/>
+                        <button name="export_template" type="object" string="Export Template" default_focus="1"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_import_job_estimate_view_wizard" model="ir.actions.act_window">
+            <field name="name">Import Job Estimate Variable</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">import.job.estimate.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="import_job_estimate_view_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_download_excel_report" model="ir.ui.view">
+            <field name="name">download.excel.report.form</field>
+            <field name="model">download.excel.report</field>
+            <field name="arch" type="xml">
+                <form string="Download Job Estimate Variable Template">
+                    <group>
+                        <field name="excel_file" readonly="1" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button string="Close" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_download_excel_report" model="ir.actions.act_window">
+            <field name="name">Download Excel Report</field>
+            <field name="view_id" ref="view_download_excel_report"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="res_model">download.excel.report</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
